@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>Internet hotspot - Log in</title>
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    :root {
+        --primary-color: white;
+        --webkit-text: white;
+    }
+    
+    body {
+        background-attachment: fixed;
+        background-image: url('lb1.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #534445;
+    }
+    
+    main {
+        padding: 10px;
+        padding-bottom: 30px;
+    }
+    
+    .login-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .login-card {
+        text-align: center;
+        width: 80%;
+    }
+    
+    .input-icon label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        color: white;
+    }
+    
+    .image-container {
+        width: 100%;
+        max-width: 250px;
+        max-height: 200px;
+        height: 100px;
+        margin: 0 auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        filter: brightness(0) invert(1);
+    }
+    
+    .form-group input {
+        font-size: 14px;
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        color: white;
+        border: 1px solid white;
+        background-color: transparent;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border: 1px solid white;
+    }
+    
+    .input-icon {
+        position: relative;
+    }
+    
+    .input-icon svg {
+        position: absolute;
+        left: 10px;
+        top: 45px;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+    }
+    
+    .input-icon input {
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+    
+    .input-icon label {
+        margin-bottom: 10px;
+    }
+    
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .login-btn {
+        width: 100%;
+        padding: 10px 5px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: var(--webkit-text);
+        font-size: 12px;
+        margin-bottom: 30px;
+        background-color: #837271;
+        margin-top: 30px;
+    }
+    
+    .activate-voucher {
+        font-size: 12px;
+        background-color: transparent;
+        padding: 5px;
+        border-radius: 30px;
+        background-image: url('lc1.svg');
+        background-size: cover;
+        max-width: 100%;
+        width: 500px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .pricing-header {
+        color: white;
+        background-color: transparent;
+        border-radius: 5px;
+        text-align: center;
+        margin: 5px auto;
+        max-width: 100%;
+        font-size: 12px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        padding: 8px;
+    }
+    
+    .notice {
+        display: none;
+        background-color: #f9f9f9;
+        color: #c53636;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        max-width: 400px;
+        font-size: 14px;
+        position: absolute;
+        z-index: 1;
+    }
+    
+    .headerbtn {
+        margin-left: 10px;
+        background-color: #de6170;
+        color: var(--webkit-text);
+        height: 30px;
+        font-size: 20px;
+        width: 30px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+    }
+    
+    .pricing {
+        text-align: center;
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .pricing-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        background-color: white;
+        background-image: url('lc1.svg');
+        background-size: cover;
+        width: 190px;
+        text-align: left;
+        justify-content: left;
+        align-items: start;
+        padding: 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-radius: 10px;
+    }
+    .card::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
+    border: 2px solid white; 
+    border-radius: 13px; 
+    pointer-events: none; 
+    }
+    
+    .cardContainer {
+        margin-top: 2px;
+        flex-grow: 1;
+    }
+    
+    .card div {
+        margin-bottom: 5px;
+    }
+    
+    .card .buy-plan-btn {
+        background-color: white;
+        padding: 5px 15px;
+        display: flex;
+        font-size: 12px;
+        color: black;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        margin-top: 15px;
+        align-self: flex-end;
+    }
+    
+    .card h4 {
+        color: white;
+        font-weight: bolder;
+        font-size: 17px;
+    }
+    
+    .card span {
+        font-weight: bolder;
+        font-size: 12px;
+        color: white;
+    }
+    
+    @media (max-width: 600px) {
+        .login-card {
+            width: 80%;
+            height: auto;
+        }
+    
+        .pricing-cards {
+            flex-direction: row;
+        }
+    
+        main {
+            display: block;
+            padding-bottom: 25px;
+        }
+    
+        .card {
+            width: 45%;
+        }
+    
+        .card h4 {
+            font-size: 16px;
+        }
+
+        .card span {
+            font-size: 12px;
+        }
+    
+        .card .buy-plan-btn {
+            font-size: 10px;
+        }
+    
+        footer {
+            position: fixed;
+            font-size: 11px;
+        }
+    
+        header {
+            position: fixed;
+        }
+    
+        .login-btn {
+            font-size: 11px;
+        }
+    
+        .activate-voucher {
+            font-size: 12px;
+        }
+    }
+    
+    .info {
+        color: var(--primary-color);
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .errormessage {
+        color: red;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .contentfinal {
+        display: contents;
+    }
+</style>
+    
+    
+</head>
+
+<body>
+    <!-- $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form> -->
+
+    <!-- <script src="/md5.js"></script> -->
+    <!-- <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script> -->
+    <!-- $(endif) -->
+    <main>
+        <div class="contentfinal">
+            <section class="login-section">
+                    <div class="activate-voucher">
+                <div class="login-card">
+                    <div class="image-container">
+                        <img id="logo" alt="Company Logo">
+                    </div>
+                    <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+
+                        <div class="form-group">
+                            <!-- <p class="info $(if error)errormessage$(endif)">
+                                $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes')<br />Free trial available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                                $(endif)
+        
+                                $(if error)$(error)$(endif)
+                            </p> -->
+                            <div class="form-group">
+                                <div class="input-icon">
+                                    <!-- Directly embedded SVG for username -->
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.18301 16.25H6.24967C5.73301 16.25 5.27467 16.2333 4.86634 16.175C2.67467 15.9333 2.08301 14.9 2.08301 12.0833V7.91667C2.08301 5.1 2.67467 4.06667 4.86634 3.825C5.27467 3.76667 5.73301 3.75 6.24967 3.75H9.13301" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12.5166 3.75H13.7499C14.2666 3.75 14.7249 3.76667 15.1333 3.825C17.3249 4.06667 17.9166 5.1 17.9166 7.91667V12.0833C17.9166 14.9 17.3249 15.9333 15.1333 16.175C14.7249 16.2333 14.2666 16.25 13.7499 16.25H12.5166" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12.5 1.66699V18.3337" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.66699 7.08301V12.9163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <label for="user">Username</label>
+                                    <input name="username" type="text" value="$(username)" placeholder="Username" id="user" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-icon">
+                                    <!-- Directly embedded SVG for password -->
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.0748 7.64142L6.41646 2.55809C4.1248 1.34975 1.63313 3.79142 2.79146 6.10809L4.14146 8.80809C4.51646 9.55809 4.51646 10.4414 4.14146 11.1914L2.79146 13.8914C1.63313 16.2081 4.1248 18.6414 6.41646 17.4414L16.0748 12.3581C17.9748 11.3581 17.9748 8.64142 16.0748 7.64142Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <label for="passw">Password</label>
+                                    <input name="password" type="password" placeholder="Password" id="passw" required />
+                                </div>
+                            </div>
+                        <button type="submit" name="autosubmit" class="login-btn">CONNECT</button>
+                    </form>
+                </div>
+                    </div>
+            </section>
+            <section class="pricing">
+                <div class="pricing-header" id="pricing-header-notice">
+                    <h2>Our Best Hotspot Plan Pricing</h2>
+                    <button class="headerbtn" id="infoBtn">ℹ</button>
+                    <div id="taxNotice" class="notice">
+                        Important Notice: Plan prices may change if any taxes are applied.
+                    </div>
+                </div>
+                <div class="pricing-cards" id="pricing-cards">
+                </div>
+            </section>
+    </main>
+    <!-- <footer>
+        <p>Powered by MikroTik RouterOS</p>
+    </footer> -->
+</body>
+
+<script>
+let weblink = 'http://10.10.20.20:8090';
+let globalCurrency = null;
+let tax = null;
+let taxable = null;
+let header = document.getElementById('pricing-header-notice');
+
+document.addEventListener('click', function (event) {
+    if (event.target && event.target.matches('.buy-plan-btn')) {
+        const planId = event.target.getAttribute('data-plan-id');
+        redirect(planId, null);
+    }
+});
+
+function toggleNotice(event) {
+    event.stopPropagation();
+    var notice = document.getElementById("taxNotice");
+    notice.style.display = notice.style.display === "block" ? "none" : "block";
+}
+
+var infoButton = document.getElementById("infoBtn");
+infoButton.addEventListener("click", toggleNotice);
+infoButton.addEventListener("touchstart", toggleNotice);
+
+function closeNotice(event) {
+    var notice = document.getElementById("taxNotice");
+    if (notice.style.display === "block" && !notice.contains(event.target) && !infoButton.contains(event.target)) {
+        notice.style.display = "none";
+    }
+}
+
+document.addEventListener("click", closeNotice);
+document.addEventListener("touchstart", closeNotice);
+
+document.getElementById("infoBtn").addEventListener("mouseover", function() {
+    document.getElementById("taxNotice").style.display = "block";
+});
+
+document.getElementById("taxNotice").addEventListener("mouseover", function() {
+    document.getElementById("taxNotice").style.display = "block";
+});
+
+document.getElementById("taxNotice").addEventListener("mouseout", function() {
+    document.getElementById("taxNotice").style.display = "none";
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    fetch(`${weblink}/index.php/api/hotspotPlan`)
+        .then((res) => res.json())
+        .then((data) => {
+            taxable = data?.userTaxable;
+            tax = data?.tax ? data?.tax : null;
+            if (tax.tax_1 || tax.tax_2 || tax.tax_3) {
+                infoButton.style.display = "block";
+            }
+            globalCurrency = data.currency;
+            const plans = data.plan;
+            header.style.display = 'flex';
+            const pricingCardsContainer = document.getElementById('pricing-cards');
+            plans.forEach(plan => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                <div class="cardContainer">
+                    <span>Plan Price</span>
+                    <h4>${globalCurrency} ${plan.customerCost}</h4>
+                    <span>Plan Name</span>
+                    <h4>${plan.planName}</h4>
+                </div>
+                <button class="buy-plan-btn" data-plan-name="${plan.planName}" data-plan-type="${plan.planType}" data-plan-id="${plan.id}" data-plan-cost="${plan.customerCost}">Buy</button>
+                `;
+                pricingCardsContainer.appendChild(card);
+            });
+        })
+        .catch((error) => console.error('Error:', error));
+});
+
+function redirect(id, paymentg) {
+    window.location.href = `http://10.10.20.20:8082/#/user/registration?planId=${id}&theme=534445&hotspotRedirect=true`;
+}
+
+const logoElement = document.getElementById("logo");
+  ["png", "jpg", "svg", "jpeg", "gif"].some(ext => {
+    const imgPath = `logo.${ext}`;
+    const img = new Image();
+    img.src = imgPath;
+    img.onload = () => (logoElement.src = imgPath);
+    return img.complete;
+  });
+</script>
+
+</html>
