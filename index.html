@@ -425,7 +425,6 @@ let header = document.getElementById('pricing-header-notice');
 document.addEventListener('click', function (event) {
     if (event.target && event.target.matches('.buy-plan-btn')) {
         const planId = event.target.getAttribute('data-plan-id');
-        redirect(planId, null);
     }
 });
 
@@ -492,9 +491,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch((error) => console.error('Error:', error));
 });
 
-function redirect(id, paymentg) {
-    window.location.href = `http://10.10.20.20:8082/#/user/registration?planId=${id}&theme=534445&hotspotRedirect=true`;
-}
 
 const logoElement = document.getElementById("logo");
   ["png", "jpg", "svg", "jpeg", "gif"].some(ext => {
